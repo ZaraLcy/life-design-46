@@ -88,17 +88,41 @@ body > :not(#TOC):not(#title-block-header):not(.book-hero):not(.reading-note):no
   list-style: none;
 }
 
+#TOC ul ul {
+  padding-left: 14px;
+  margin-top: 5px;
+  border-left: 1px solid var(--line);
+}
+
 #TOC li {
-  margin: 7px 0;
+  margin: 10px 0;
+}
+
+#TOC ul ul li {
+  margin: 6px 0;
+  font-size: 13px;
 }
 
 #TOC a {
   color: var(--muted);
   text-decoration: none;
+  transition: color 0.2s ease;
+  display: block;
+}
+
+#TOC > ul > li > a {
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 15px;
 }
 
 #TOC a:hover {
   color: var(--accent-strong);
+}
+
+#TOC .active {
+  color: var(--mark) !important;
+  font-weight: 700;
 }
 
 .book-hero {
