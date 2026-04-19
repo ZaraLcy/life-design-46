@@ -25,6 +25,8 @@ format:
     smooth-scroll: true
     html-math-method: plain
     code-fold: false
-    include-after-body: scripts/reading-progress.html
+    include-after-body:
+      - scripts/reading-progress.html
+      - scripts/footer.html
 
 lang: zh-TW
