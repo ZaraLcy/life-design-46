@@ -1,11 +1,23 @@
 <script>
   (() => {
+    const moveToc = () => {
+      const toc = document.getElementById("TOC");
+      const note = document.querySelector(".reading-note");
+      if (toc && note && toc.previousElementSibling !== note) {
+        note.insertAdjacentElement("afterend", toc);
+      }
+    };
     const update = () => {
       const doc = document.documentElement;
       const max = doc.scrollHeight - doc.clientHeight;
       const pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
       doc.style.setProperty("--reading-progress", `${pct}%`);
     };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", moveToc);
+    } else {
+      moveToc();
+    }
     update();
     document.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);

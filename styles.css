@@ -53,31 +53,30 @@ a:hover {
   color: var(--mark);
 }
 
-.page-columns {
-  display: grid;
-  grid-template-columns: minmax(18px, 1fr) minmax(0, var(--max)) minmax(220px, 300px) minmax(18px, 1fr);
-  column-gap: 36px;
-}
-
-.page-columns .content {
-  grid-column: 2;
+body > :not(#TOC):not(#title-block-header):not(.book-hero):not(.reading-note):not(script) {
+  max-width: var(--max);
+  margin-left: max(36px, calc((100vw - 1120px) / 2));
+  margin-right: auto;
 }
 
 #TOC {
-  grid-column: 3;
-  position: sticky;
+  position: fixed;
   top: 28px;
-  align-self: start;
+  right: max(28px, calc((100vw - 1320px) / 2));
+  z-index: 3;
+  width: min(290px, calc(100vw - 56px));
   max-height: calc(100vh - 56px);
   overflow: auto;
   border-left: 1px solid var(--line);
-  padding-left: 18px;
+  padding: 0 0 0 18px;
   color: var(--muted);
   font-size: 14px;
   line-height: 1.45;
+  background: rgba(255, 253, 248, 0.9);
+  backdrop-filter: blur(10px);
 }
 
-#TOC .toc-title {
+#TOC #toc-title {
   color: var(--ink);
   font-size: 14px;
   font-weight: 700;
@@ -102,18 +101,13 @@ a:hover {
   color: var(--accent-strong);
 }
 
-main.content {
-  padding: 0 0 80px;
-}
-
 .book-hero {
-  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: minmax(22px, 1fr) minmax(0, 700px) minmax(220px, 360px) minmax(22px, 1fr);
   gap: 40px;
   min-height: 92vh;
   align-items: center;
-  padding: 48px 0 64px;
+  padding: 48px 330px 64px 0;
   background:
     linear-gradient(90deg, rgba(255, 253, 248, 0.98), rgba(255, 253, 248, 0.84)),
     linear-gradient(180deg, var(--soft), var(--paper));
@@ -148,10 +142,14 @@ main.content {
 }
 
 .hero-actions {
+  margin: 34px 0 18px;
+}
+
+.hero-actions p {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin: 34px 0 18px;
+  margin: 0;
 }
 
 .primary-action,
@@ -194,14 +192,15 @@ main.content {
 
 .hero-cover img {
   display: block;
-  width: min(100%, 330px);
+  width: min(100%, 285px);
   height: auto;
   border-radius: 8px;
   box-shadow: 0 24px 60px rgba(31, 37, 35, 0.22);
 }
 
 .reading-note {
-  margin: 52px auto 64px;
+  margin-top: 52px;
+  margin-bottom: 64px;
   max-width: var(--max);
   padding: 18px 22px;
   background: var(--soft);
@@ -305,14 +304,16 @@ pre {
 }
 
 @media (max-width: 1080px) {
-  .page-columns {
-    display: block;
+  body > :not(#TOC):not(#title-block-header):not(.book-hero):not(.reading-note):not(script) {
+    max-width: var(--max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 22px;
+    padding-right: 22px;
   }
 
-  main.content {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 0 22px 72px;
+  body {
+    padding-bottom: 72px;
   }
 
   #TOC {
@@ -356,13 +357,40 @@ pre {
     line-height: 1.82;
   }
 
-  main.content {
+  body > :not(#TOC):not(#title-block-header):not(.book-hero):not(.reading-note):not(script) {
     padding-left: 18px;
     padding-right: 18px;
   }
 
   .book-hero {
+    display: block;
     padding: 34px 0 42px;
+  }
+
+  .hero-copy,
+  .hero-cover {
+    width: min(340px, calc(100vw - 72px));
+    max-width: min(340px, calc(100vw - 72px));
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .hero-title,
+  .hero-copy p,
+  .hero-actions p,
+  .hero-meta p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-cover {
+    margin-top: 34px;
+  }
+
+  .hero-meta {
+    font-size: 14px;
   }
 
   .hero-title {
@@ -374,7 +402,12 @@ pre {
   }
 
   .hero-actions {
+    display: block;
+  }
+
+  .hero-actions p {
     display: grid;
+    gap: 12px;
   }
 
   .primary-action,
