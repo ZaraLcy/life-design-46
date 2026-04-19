@@ -1,0 +1,30 @@
+project:
+  type: default
+  output-dir: _book
+
+bibliography: references.bib
+csl: apa.csl
+citeproc: true
+link-citations: true
+reference-section-title: "參考文獻"
+
+format:
+  typst:
+    mainfont: "芫荽"
+    fontsize: 9pt
+    toc: false
+    include-in-header: theme.typ
+  html:
+    theme: none
+    css: styles.css
+    toc: true
+    toc-depth: 2
+    toc-location: right
+    number-sections: false
+    anchor-sections: true
+    smooth-scroll: true
+    html-math-method: plain
+    code-fold: false
+    include-after-body: scripts/reading-progress.html
+
+lang: zh-TW

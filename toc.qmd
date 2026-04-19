@@ -1,0 +1,113 @@
+---
+title: ""
+format:
+  typst:
+    papersize: a5
+    mainfont: "芫荽"
+    fontsize: 10pt
+    margin:
+      x: 22mm
+      y: 24mm
+    toc: false
+lang: zh-TW
+---
+
+```{=typst}
+// 章節資料由 scripts/build-toc.py 自動生成（來源：chapters.yml + book.pdf outline）
+#import "_toc-data.typ": toc-parts
+
+#set text(lang: "zh", region: "tw")
+#set par(justify: true, leading: 0.8em, spacing: 0.9em)
+#set page(numbering: "1")
+
+#align(center)[
+  #text(font: "芫荽", size: 22pt)[46歲的人生設計]
+  #v(0.4em)
+  #text(size: 10pt, fill: luma(45%))[不是重來一次，而是重新配置你的時間、身體、關係與現金流]
+  #v(1em)
+  #line(length: 40%, stroke: 0.5pt + luma(70%))
+  #v(0.6em)
+  #text(font: "芫荽", size: 14pt)[目　次]
+]
+
+#v(1.2em)
+
+// ── 樣式 helpers ─────────────────────────────
+
+#let status-tag(status) = {
+  if status == "pilot" {
+    text(size: 8pt, fill: rgb("#2a7"))[pilot]
+  } else if status == "drafted" {
+    text(size: 8pt, fill: luma(55%))[drafted]
+  } else {
+    text(size: 8pt, fill: luma(65%))[planned]
+  }
+}
+
+#let page-number(page) = {
+  if page == none {
+    text(size: 9pt, fill: luma(75%))[—]
+  } else {
+    text(size: 9.5pt, weight: "semibold", fill: luma(25%))[#page]
+  }
+}
+
+#let part-header(name) = block(
+  above: 1.4em,
+  below: 0.6em,
+  text(font: "芫荽", size: 11pt, fill: luma(30%), name)
+)
+
+// 一列：編號、標題、leader dots、status tag、頁碼
+#let chapter-row(num, title, status, page) = block(
+  above: 0.5em,
+  below: 0.15em,
+  grid(
+    columns: (2.4em, auto, 1fr, 3.4em, 1.8em),
+    column-gutter: 0.6em,
+    align: (right + horizon, left + horizon, center + horizon, right + horizon, right + horizon),
+    text(weight: "bold")[#num],
+    text(weight: "bold")[#title],
+    box(width: 100%)[#repeat[#text(fill: luma(80%))[.]]],
+    status-tag(status),
+    page-number(page),
+  )
+)
+
+#let chapter-subtitle(subtitle) = pad(
+  top: 0em,
+  bottom: 0.35em,
+  left: 3em,
+  right: 0.5em,
+  text(size: 9pt, fill: luma(40%), subtitle),
+)
+
+// ── 展開目次 ─────────────────────────────────
+
+#for part in toc-parts {
+  part-header(part.name)
+  for ch in part.chapters {
+    chapter-row(ch.num, ch.title, ch.status, ch.page)
+    chapter-subtitle(ch.subtitle)
+  }
+}
+
+#v(1.2em)
+
+#align(center)[
+  #line(length: 40%, stroke: 0.5pt + luma(70%))
+]
+
+#v(0.5em)
+
+#text(size: 8.5pt, fill: luma(45%))[
+  *狀態標記*：
+  #text(fill: rgb("#2a7"))[pilot] ＝ 本 release 已釋出並帶實際頁碼（數字由 PDF outline 自動抽取）；
+  #text(fill: luma(55%))[drafted] ＝ 初稿完成待審；
+  #text(fill: luma(65%))[planned] ＝ 結構已定、內容待寫。
+
+  Pilot 階段先以章節狀態確認目次結構；安裝 `mutool` 後可由 `scripts/build-toc.py` 自動抽取實際頁碼。
+
+  全書預計約 100 頁（A5, 9pt）；所有學術引用於 release 前經 CrossRef API 驗證。
+]
+```

@@ -1,0 +1,41 @@
+# 全書章節主檔。Pilot 階段先 render 前言、第一章、第二章。
+# 後續新增章節時：寫 NN.qmd，並在 book.qmd include。
+parts:
+  - name: "第一部 重新看見中年"
+    chapters:
+      - num: 1
+        title: "第一章 你不是卡住，你是進入第二套作業系統"
+        subtitle: "中年不是意志力下降，而是責任、身體、時間、風險偏好的重新組合"
+      - num: 2
+        title: "第二章 46歲的人生資產負債表"
+        subtitle: "盤點健康資本、關係資本、技能資本、現金流資本"
+  - name: "第二部 可承受的改變"
+    chapters:
+      - num: 3
+        title: "第三章 不要找熱情，先找可承受的實驗"
+        subtitle: "反對天命敘事，用 30/60/90 天低風險原型替代裸辭幻想"
+      - num: 4
+        title: "第四章 你的工作不是職稱，是一組可交易能力"
+        subtitle: "從履歷思維轉成能力組合、工作市場與弱連結"
+  - name: "第三部 下半場的底層平台"
+    chapters:
+      - num: 5
+        title: "第五章 身體是下半場的底層平台"
+        subtitle: "睡眠、肌力、代謝、壓力管理與最低可維持劑量"
+      - num: 6
+        title: "第六章 關係不是情感問題，是人生基礎建設"
+        subtitle: "伴侶、父母、孩子、朋友、弱連結與孤立風險"
+      - num: 7
+        title: "第七章 錢不是自由，現金流才是選項"
+        subtitle: "退休、保險、負債、教育費、照護費與選項設計"
+  - name: "第四部 讓未來變得可行"
+    chapters:
+      - num: 8
+        title: "第八章 把未來自己當成一個真實的人"
+        subtitle: "future self-continuity、延遲滿足與後悔最小化"
+      - num: 9
+        title: "第九章 90天人生設計衝刺"
+        subtitle: "診斷、假設、實驗、回顧、調整"
+      - num: 10
+        title: "第十章 下半場不是答案，是一套更新機制"
+        subtitle: "建立可反覆更新的人生系統"

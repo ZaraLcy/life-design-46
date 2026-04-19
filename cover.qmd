@@ -1,0 +1,29 @@
+---
+title: ""
+format:
+  typst:
+    papersize: a5
+    margin:
+      x: 22mm
+      y: 28mm
+    mainfont: "芫荽"
+    fontsize: 10pt
+lang: zh-TW
+---
+
+```{=typst}
+#set page(numbering: none, footer: none, header: none)
+
+#v(1.1fr)
+#align(center)[
+  #text(font: "芫荽", size: 31pt, tracking: 0.08em)[46歲的人生設計]
+  #v(1.2em)
+  #text(size: 12pt, fill: luma(38%))[不是重來一次，而是重新配置你的時間、身體、關係與現金流]
+]
+#v(2.2fr)
+#align(center)[
+  #text(size: 11pt)[Pilot v0.1]
+  #v(0.8em)
+  #text(size: 10pt, fill: luma(45%))[A5 商業書樣章]
+]
+```
